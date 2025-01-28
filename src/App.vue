@@ -5,5 +5,5 @@ import Hero from '@/components/Hero.vue'
 
 <template>
   <Navbar />
-  <Hero />
+  <Hero title="Test title" subtitle="Test subtitle" />
 </template>
