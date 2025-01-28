@@ -1,5 +1,12 @@
-<script setup></script>
+<script setup>
+import jobData from '@/jobs.json'
+import { ref } from 'vue'
+
+const jobs = ref(jobData)
+</script>
 
 <template>
-  Job listings
+  <div v-for="job in jobs" :key="job.id">
+    {{ job.title }}
+  </div>
 </template>
