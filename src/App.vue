@@ -5,6 +5,7 @@ import { ref } from 'vue'
 const name = ref('John Doe')
 const status = ref('active')
 const tasks = ref([ 'Task 1', 'Task 2', 'Task 3' ])
+const newTask = ref('')
 
 const toggleStatus = () => {
   if (status.value === 'active') {
@@ -15,6 +16,11 @@ const toggleStatus = () => {
     status.value = 'active'
   }
 }
+
+const addTask = () => {
+  tasks.value.push(newTask.value)
+  newTask.value = ''
+}
 </script>
 
 <template>
@@ -22,6 +28,11 @@ const toggleStatus = () => {
   <p v-if="status === 'active'">User is active</p>
   <p v-else-if="status === 'pending'">User is pending</p>
   <p v-else>User is inactive</p>
+
+  <form @submit.prevent="addTask">
+    <label for="newTask">Add Task</label>
+    <input type="text" id="newTask" name="newTask" v-model="newTask" />
+  </form>
 
   <h3>Tasks:</h3>
   <ul>
