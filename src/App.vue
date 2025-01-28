@@ -18,8 +18,10 @@ const toggleStatus = () => {
 }
 
 const addTask = () => {
-  tasks.value.push(newTask.value)
-  newTask.value = ''
+  if (newTask.value.trim() !== '') {
+    tasks.value.push(newTask.value)
+    newTask.value = ''
+  }
 }
 </script>
 
@@ -32,6 +34,7 @@ const addTask = () => {
   <form @submit.prevent="addTask">
     <label for="newTask">Add Task</label>
     <input type="text" id="newTask" name="newTask" v-model="newTask" />
+    <button type="submit">Add Task</button>
   </form>
 
   <h3>Tasks:</h3>
